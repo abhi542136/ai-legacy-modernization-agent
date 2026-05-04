@@ -1,5 +1,5 @@
 from risk_engine import assess_risk
-from llm_service import analyze_code
+from agent_service import analyze_with_agent
 from llm_service import generate_modern_code
 from checklist import generate_checklist
 from fastapi import HTTPException
@@ -35,7 +35,7 @@ def analyze(request: AnalyzeRequest):
 
     risk = assess_risk(request.code_snippet)
 
-    llm_result = analyze_code(request.code_snippet)
+    llm_result = analyze_with_agent(request.code_snippet)
 
     response = {
         "snippet_id": snippet_id,
